@@ -95,20 +95,7 @@ class ModernLoginWindow(QMainWindow):
 
         card_layout.addLayout(pw_row)
 
-        # remember + forgot
-        row = QHBoxLayout()
-        self.remember_cb = QCheckBox("Ghi nhớ đăng nhập")
-        self.remember_cb.setObjectName("remember")
-        row.addWidget(self.remember_cb)
-        row.addItem(QSpacerItem(20, 10, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum))
-        forgot = QLabel('<a href="#">Quên mật khẩu?</a>')
-        forgot.setOpenExternalLinks(False)
-        forgot.linkActivated.connect(self._forgot_pw)
-        forgot.setObjectName("link")
-        row.addWidget(forgot)
-        card_layout.addLayout(row)
-
-        # Action buttons
+                # Action buttons
         btn_row = QHBoxLayout()
         btn_row.setSpacing(12)
         btn_row.addStretch()
@@ -129,12 +116,6 @@ class ModernLoginWindow(QMainWindow):
         btn_row.addWidget(self.cancel_btn)
 
         card_layout.addLayout(btn_row)
-
-        # Footer small
-        footer = QLabel("Được xây dựng với ❤️  •  PyQt6")
-        footer.setObjectName("footer")
-        footer.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        card_layout.addWidget(footer)
 
         # Center the card
         central_layout.addStretch()
@@ -241,9 +222,6 @@ class ModernLoginWindow(QMainWindow):
         else:
             self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
             self.toggle_pw_btn.setText("👁")
-
-    def _forgot_pw(self):
-        QMessageBox.information(self, "Quên mật khẩu", "Chức năng quên mật khẩu chưa được triển khai.")
 
     def _handle_login(self):
         username = self.username_input.text().strip()
